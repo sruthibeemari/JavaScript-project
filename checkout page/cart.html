@@ -1,166 +1,180 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Shopping Cart</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<html lang="en">
 
-     <style>
-         body {
-             font-family: Arial, sans-serif;
-             margin: 20px;
-         }
-         .cart-container {
-             display: flex;
-             flex-wrap: wrap;
-             gap: 20px;
-             justify-content: space-around;
-         }
-         .cart-item {
-             width: 250px; 
-             display: flex;
-             flex-direction: column;
-             padding: 15px;
-             border: 1px solid #ccc;
-             border-radius: 5px;
-             text-align: center;
-         }
-         .cart-item .details {
-             margin-bottom: 15px;
-             display: grid;
-             grid-template-rows: 4;
-         }
-         .cart-item .details span {
-             margin-bottom: 5px;
-         }
-    
-       
-         .action-btn {
-             padding: 5px 10px;
-             cursor: pointer;
-             border-radius: 3px;
-         }
-    
-         .increment:hover { background-color: green; }
-         .decrement:hover {background-color: rgb(246, 137, 13);  }
-         .remove:hover {background-color: red; }
-         .total-container {
-             font-size: 18px;
-             text-align: right;
-             margin-top: 20px;
-         }
-         .empty-cart {
-             text-align: center;
-             font-size: 18px;
-             color: #888;
-         }
-       .back{
-        border: 2px solid black;
-        padding:5px 12px 5px 12px;
-        border-radius: 30px;
-        text-decoration: none;
-       }
-       .back:hover{
-        background-color: rgb(7, 50, 106);
-         color: white;
-        box-shadow: 2px 2px rgb(11, 18, 115); 
-       }
-     </style>
- </head>
- <body>
-   <a href="../main page/watches.html" class="back"> <b >Back</b></a>
-     <h1>Your Cart</h1>
-     <div class="cart-container" id="cart-items">
-     </div>
-     <div class="total-container">
-         <strong>Total Amount: Rs. <span id="total-amount">0</span></strong>
-     </div>
-     <script>
-       
-         let cart = JSON.parse(localStorage.getItem('cart')) || [];
- 
-      
-         const cartItemsContainer = document.getElementById('cart-items');
-         const totalAmountContainer = document.getElementById('total-amount');
- 
-      
-         function calculateTotal() {
-             return cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
-         }
- 
-       
-         function renderCart() {
-             cartItemsContainer.innerHTML = ''; 
-             if (cart.length === 0) {
-                 cartItemsContainer.innerHTML = `<div class="empty-cart">Your cart is empty.</div>`;
-             } else {
-                 cart.forEach((cartItem, index) => {
-                     const { item, price, quantity = 1 } = cartItem;
-                     const cartItemElement = document.createElement('div');
-                     cartItemElement.classList.add('cart-item');
-                     cartItemElement.innerHTML = `
-                         <div class="details">
-                             <span><strong>Item:</strong> ${item}</span>
-                             <span><strong>Price:</strong> Rs. ${price}</span>
-                             <span><strong>Quantity:</strong> ${quantity}</span>
-                             <span><strong>Total:</strong> Rs. ${price * quantity}</span>
-                         </div>
-                         <div class="actions">
-                             <button class="action-btn increment" data-index="${index}" >+</button>
-                             <button class="action-btn decrement" data-index="${index}"   >-</button>
-                             <button class="action-btn remove" data-index="${index}"  ><i class="fa-solid fa-trash"></i>
-                                </button>
-                         </div>
-                     `;
-                     cartItemsContainer.appendChild(cartItemElement);
-                 });
-             }
- 
-             // Update total amount
-             totalAmountContainer.textContent = calculateTotal();
- 
-             // Save updated cart back to localStorage
-             localStorage.setItem('cart', JSON.stringify(cart));
-         }
- 
-         // Increment quantity
-         function incrementItem(index) {
-             cart[index].quantity = (cart[index].quantity || 1) + 1;
-             renderCart();
-         }
- 
-         // Decrement quantity
-         function decrementItem(index) {
-             if (cart[index].quantity > 1) {
-                 cart[index].quantity -= 1;
-             } else {
-                 removeItem(index);
-             }
-             renderCart();
-         }
- 
-         // Remove item
-         function removeItem(index) {
-             cart.splice(index, 1);
-             renderCart();
-         }
- 
-         // Add event listeners for action buttons
-         cartItemsContainer.addEventListener('click', (event) => {
-             const index = event.target.getAttribute('data-index');
-             if (event.target.classList.contains('increment')) {
-                 incrementItem(index);
-             } else if (event.target.classList.contains('decrement')) {
-                 decrementItem(index);
-             } else if (event.target.classList.contains('remove')) {
-                 removeItem(index);
-             }
-         });
- 
-        
-         renderCart();
-     </script>
- </body>
- </html>
- 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .cart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+
+        .cart-item {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .cart-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .cart-item .details {
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-rows: 4;
+        }
+
+        .cart-item .details span {
+            margin-bottom: 5px;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .increment:hover {
+            background-color: green;
+        }
+
+        .decrement:hover {
+            background-color: rgb(246, 137, 13);
+        }
+
+        .remove:hover {
+            background-color: red;
+        }
+
+        .total-container {
+            font-size: 18px;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            font-size: 18px;
+            color: #888;
+        }
+
+        .back {
+            border: 2px solid black;
+            padding: 5px 12px 5px 12px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            background-color: rgb(7, 50, 106);
+            color: white;
+            box-shadow: 2px 2px rgb(11, 18, 115);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../main page/watches.html" class="back"><b>Back</b></a>
+    <h1>Your Cart</h1>
+    <div class="cart-container" id="cart-items"></div>
+    <div class="total-container">
+        <strong>Total Amount: Rs. <span id="total-amount">0</span></strong>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalAmountContainer = document.getElementById('total-amount');
+
+        function calculateTotal() {
+            return cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
+        }
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<div class="empty-cart">Your cart is empty.</div>`;
+            } else {
+                cart.forEach((cartItem, index) => {
+                    const { item, price, quantity = 1, image } = cartItem;
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.classList.add('cart-item');
+                    cartItemElement.innerHTML = `
+                        <img src="${image}" alt="${item}">
+                        <div class="details">
+                            <span><strong>Item:</strong> ${item}</span>
+                            <span><strong>Price:</strong> Rs. ${price}</span>
+                            <span><strong>Quantity:</strong> ${quantity}</span>
+                            <span><strong>Total:</strong> Rs. ${price * quantity}</span>
+                        </div>
+                        <div class="actions">
+                            <button class="action-btn increment" data-index="${index}">+</button>
+                            <button class="action-btn decrement" data-index="${index}">-</button>
+                            <button class="action-btn remove" data-index="${index}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+            }
+
+            totalAmountContainer.textContent = calculateTotal();
+
+            // Save updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function incrementItem(index) {
+            cart[index].quantity = (cart[index].quantity || 1) + 1;
+            renderCart();
+        }
+
+        function decrementItem(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                removeItem(index);
+            }
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        cartItemsContainer.addEventListener('click', (event) => {
+            const index = event.target.getAttribute('data-index');
+            if (event.target.classList.contains('increment')) {
+                incrementItem(index);
+            } else if (event.target.classList.contains('decrement')) {
+                decrementItem(index);
+            } else if (event.target.classList.contains('remove')) {
+                removeItem(index);
+            }
+        });
+
+        renderCart();
+    </script>
+</body>
+
+</html>

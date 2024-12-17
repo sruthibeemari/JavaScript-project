@@ -68,6 +68,12 @@ button:hover {
   margin-top: 10px;
 }
 
+
+.input-group {
+  position: relative;
+}
+
+
 /* Media Queries */
 
 /* For screens less than 1200px (Tablets and small laptops) */
