@@ -22,26 +22,4 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
       document.getElementById("errorMessage").style.display = "block";
     }
   });
-  // Eye toggle function
-const togglePassword = document.getElementById("togglePassword");
-const passwordInput = document.getElementById("password");
-
-togglePassword.addEventListener("click", function() {
-  // Toggle password visibility
-  const type = passwordInput.type === "password" ? "text" : "password";
-  passwordInput.type = type;
-
-  // Change the eye icon
-  if (passwordInput.type === "password") {
-    // If password is hidden, show eye
-    this.classList.remove("fa-eye");
-    this.classList.add("fa-eye-slash");
-  } else {
-    // If password is visible, show eye-slash
-    this.classList.remove("fa-eye-slash");
-    this.classList.add("fa-eye");
-  }
-});
-
-  
-  
+ 
