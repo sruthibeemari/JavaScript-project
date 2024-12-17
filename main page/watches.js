@@ -1,6 +1,3 @@
-
-
-// Get the cart from localStorage or initialize an empty array if it doesn't exist
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Add to Cart Functionality
@@ -8,7 +5,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', () => {
         const item = button.getAttribute('data-item');
         const price = button.getAttribute('data-price');
-        const image = button.getAttribute('data-image'); // Added image attribute
+        const image = button.getAttribute('data-image'); 
         
         // Check if the item already exists in the cart
         const existingItem = cart.find(cartItem => cartItem.item === item);
@@ -27,7 +24,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         alert(`${item} has been added to the cart.`);
         console.log("Current Cart:", cart);
 
-        // Redirect to the cart page
+        
         window.location.href = "../checkout page/cart.html";
     });
 });
@@ -35,7 +32,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
 // Buy Now Functionality
 document.querySelectorAll('.buy-now').forEach(button => {
     button.addEventListener('click', () => {
-        const image = button.getAttribute('data-image'); // Fixed the attribute name here
+        const image = button.getAttribute('data-image'); 
         const item = button.getAttribute('data-item');
         const price = button.getAttribute('data-price');
         
