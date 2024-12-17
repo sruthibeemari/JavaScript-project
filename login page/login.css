@@ -1,67 +1,142 @@
-/* Basic Styling */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f9;
-    background-image: url("https://plus.unsplash.com/premium_photo-1670537439541-d2eb20e1f6ce?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2F0Y2glMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww");
-    background-repeat: no-repeat;
-    background-size: cover;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  background-image: url("https://plus.unsplash.com/premium_photo-1670537439541-d2eb20e1f6ce?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2F0Y2glMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  }
-  
+.login-container {
+  background-color: rgb(85, 86, 85);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  position: relative;
+  left: 200px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+  color: white;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 90%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #335dde;
+  transform: scale(1.2, 1.2);
+}
+
+#errorMessage {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Media Queries */
+
+/* For screens less than 1200px (Tablets and small laptops) */
+@media (max-width: 1200px) {
   .login-container {
-    background-color: rgb(85, 86, 85);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    position: relative;
-    left: 200px;
+    width: 80%;
+    left: 0; 
   }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-    text-align: left;
-    color: white;
-  }
-  
-  .input-group label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  .input-group input {
+}
+
+/* For screens less than 992px (Tablets and large phones) */
+@media (max-width: 992px) {
+  .login-container {
     width: 90%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    left: 0;
+    padding: 15px; 
   }
-  
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .input-group input {
+    padding: 0px; 
+  }
+
   button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
+    padding: 12px 20px; 
   }
-  
-  button:hover {
-    background-color: #335dde;
-    transform: scale(1.2, 1.2);
+}
+
+/* For screens less than 768px (Smaller tablets and large mobile phones) */
+@media (max-width: 768px) {
+  .login-container {
+    width: 95%;
+    left: 0;
+    padding: 10px;
   }
-  
-  #errorMessage {
-    font-size: 14px;
-    margin-top: 10px;
+
+  h2 {
+    font-size: 22px;
   }
+
+  .input-group input {
+    width: 100%; 
+  }
+
+  button {
+    padding: 15px; 
+  }
+}
+
+/* For screens less than 480px (Mobile Phones) */
+@media (max-width: 480px) {
+  body {
+    background-position: center;
+  }
+
+  .login-container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .input-group input {
+    font-size: 16px; 
+  }
+
+  button {
+    font-size: 16px; 
+    padding: 14px; 
+  }
+}

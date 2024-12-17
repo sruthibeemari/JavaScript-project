@@ -6,59 +6,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to AuroraTimes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #434040;
-            margin: 0;
-            padding: 0;
-            background-image: url("https://i0.wp.com/picjumbo.com/wp-content/uploads/fall-background-with-space-for-text-free-image.jpeg?w=600&quality=80");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .logo{
-            border-radius: 50%;
-        }
-        .container {
-            text-align: center;
-            padding: 30px 20px; 
-            margin: 0;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #434040;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://i0.wp.com/picjumbo.com/wp-content/uploads/fall-background-with-space-for-text-free-image.jpeg?w=600&quality=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-        h1 {
-            color: #1a1919;
-            margin: 10px 0;
-        }
+.logo {
+    border-radius: 50%;
+    max-width: 100%;
+}
 
-        b {
-            font-size: 18px;
-            color: #4b4d4b;
-            display: block;
-            margin: 10px 0;
-        }
+.container {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-        .cta-button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background-color: #11784a;
-            color: white;
-            font-size: 16px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+h1 {
+    color: #1a1919;
+    margin: 10px 0;
+}
 
-        .images {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
+b {
+    font-size: 18px;
+    color: #4b4d4b;
+    display: block;
+    margin: 10px 0;
+}
 
-        .cta-button:hover {
-            background-color: #0a382c;
-        }
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #11784a;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #0a382c;
+}
+
+/* Media Queries */
+
+/* For screens less than 1200px (Tablets and small laptops) */
+@media (max-width: 1200px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px; 
+    }
+
+    b {
+        font-size: 16px; 
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 12px 24px; 
+    }
+
+    .images img {
+        width: 150px; 
+    }
+}
+
+/* For screens less than 992px (Tablets and large phones) */
+@media (max-width: 992px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    b {
+        font-size: 14px; 
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+
+    .images img {
+        width: 120px; 
+    }
+}
+
+/* For screens less than 768px (Smaller tablets and large mobile phones) */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px; 
+    }
+
+    b {
+        font-size: 14px;
+    }
+
+    .cta-button {
+        font-size: 12px;
+        padding: 12px 22px;
+    }
+
+    .images {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .images img {
+        width: 150px; /* Larger image size on smaller screens */
+        margin-bottom: 10px;
+    }
+}
+
+/* For screens less than 480px (Mobile Phones) */
+@media (max-width: 480px) {
+    .logo {
+        width: 80px; 
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px; 
+    }
+
+    b {
+        font-size: 12px;
+    }
+
+    .cta-button {
+        font-size: 14px;
+        padding: 12px 20px; 
+    }
+
+    .images img {
+        width: 100px; 
+    }
+}
 
     </style>
 </head>
