@@ -72,6 +72,12 @@ button:hover {
 .input-group {
   position: relative;
 }
+.bypass{
+  text-decoration: none;
+}
+.bypass:hover{
+  color: red;
+}
 
 
 /* Media Queries */
